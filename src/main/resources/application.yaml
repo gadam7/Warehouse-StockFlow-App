@@ -1,0 +1,61 @@
+jwt:
+  secret: ${JWT_SECRET}
+
+server:
+  port: ${CONTAINER_PORT:8080}
+  error:
+    path: /user/error
+    whitelabel:
+      enabled: false
+
+app.frontend-base-url: http://localhost:4200
+
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+  output:
+    ansi:
+      enabled: ALWAYS
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8InnoDBDialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally_quoted_indentifiers: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+  sql:
+    init:
+      mode: never
+      continue-on-error: false
+  logging:
+    pattern:
+      console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(%-5level) %clr([%t]){faint} %clr(%logger{36}){cyan} - %msg%n%throwable"
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          writetimeout: 5000
+          connectiontimeout: 5000
+          timeout: 5000
+          auth: true
+          starttls:
+            enable: true
+            required: true
+ui:
+  app:
+    url: ${UI_APP_URL}
+application:
+  title: Warehouse StockFlow Management System
+  version: 1.0
