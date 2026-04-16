@@ -54,10 +54,9 @@ This project ships with seeded **Categories** and **Products** in the `dev` prof
 
 ## Accounts / Authentication (Local Demo)
 
-You can create your own account from the UI using a **real email address**.
+You can create your own account from the UI using a **dummy email address**.
 
-- After registration, the backend sends a verification email.
-- Use the verification link/code you receive to activate the account, then log in.
+- After registration, the user is already enabled w/o verification mail for test purposes.
 
 ### Roles for demo/testing
 By default, newly created users are assigned a role on registration.
