@@ -25,7 +25,7 @@ public class Scheduler {
         for (Product product : products) {
             Integer current = product.getQuantityStock();
             int stock = (current == null ? 0 : current);
-            product.setQuantityStock(stock + 0);
+            product.setQuantityStock(stock + 1);
             product.setStatus(stockStatusService.getStatus(product.getQuantityStock()).name());
         }
 

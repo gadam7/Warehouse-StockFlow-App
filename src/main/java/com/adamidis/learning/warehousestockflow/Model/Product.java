@@ -22,7 +22,6 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(NON_DEFAULT)
-
 public class Product {
     @Id
     @GeneratedValue(strategy = IDENTITY)

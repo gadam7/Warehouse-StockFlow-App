@@ -37,6 +37,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 import static com.adamidis.learning.warehousestockflow.Constant.Constants.DATE_FORMAT;
+import static com.adamidis.learning.warehousestockflow.Enum.RoleType.ROLE_ADMIN;
 import static com.adamidis.learning.warehousestockflow.Enum.RoleType.ROLE_USER;
 import static com.adamidis.learning.warehousestockflow.Enum.VerificationType.ACCOUNT;
 import static com.adamidis.learning.warehousestockflow.Enum.VerificationType.PASSWORD;
@@ -71,7 +72,7 @@ public class UserRepositoryImpl implements UserRepository<User>, UserDetailsServ
             user.setId(requireNonNull(holder.getKey()).longValue());
 
             // Add role to the user
-            roleRepository.addRoleToUser(user.getId(), ROLE_USER.name());
+            roleRepository.addRoleToUser(user.getId(), ROLE_ADMIN.name());
 
             // Send verification URL
             String verificationUrl = getVerificationUrl(UUID.randomUUID().toString(), ACCOUNT.getType());

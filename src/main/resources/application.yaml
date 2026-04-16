@@ -53,6 +53,19 @@ spring:
           starttls:
             enable: true
             required: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: Warehouse StockFlow Management System
+    version: 1.0
+    frontendBaseUrl: ${app.frontend-base-url}
 ui:
   app:
     url: ${UI_APP_URL}

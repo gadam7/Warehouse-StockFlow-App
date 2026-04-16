@@ -47,6 +47,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(PUBLIC_URLS).permitAll()
                     .requestMatchers(OPTIONS).permitAll()
+                    .requestMatchers(GET, "/actuator/health").permitAll()
+                    .requestMatchers(GET, "/actuator/info").permitAll()
                     .requestMatchers(DELETE, "/user/delete/**").hasAnyAuthority("DELETE:USER")
                     .requestMatchers(DELETE, "/category/delete/**").hasAnyAuthority("DELETE:CATEGORY")
                     .requestMatchers(DELETE, "/category/product/delete/**").hasAnyAuthority("DELETE:PRODUCT")

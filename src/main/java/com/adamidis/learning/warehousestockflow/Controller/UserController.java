@@ -319,7 +319,9 @@ public class UserController {
             }
             return loggedInUser;
         } catch (Exception exception) {
-            publisher.publishEvent(new NewUserEvent(email, LOGIN_ATTEMPT_FAILURE));
+            if (userService.getUserByEmail(email) != null) {
+                publisher.publishEvent(new NewUserEvent(email, LOGIN_ATTEMPT_FAILURE));
+            }
             processError(request, response, exception);
             throw new ApiException(exception.getMessage());
         }
