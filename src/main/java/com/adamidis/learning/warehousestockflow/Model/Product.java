@@ -1,6 +1,5 @@
 package com.adamidis.learning.warehousestockflow.Model;
 
-import com.adamidis.learning.warehousestockflow.Enum.StockStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;

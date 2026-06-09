@@ -38,7 +38,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.adamidis.learning.warehousestockflow.Constant.Constants.DATE_FORMAT;
 import static com.adamidis.learning.warehousestockflow.Enum.RoleType.ROLE_ADMIN;
-import static com.adamidis.learning.warehousestockflow.Enum.RoleType.ROLE_USER;
 import static com.adamidis.learning.warehousestockflow.Enum.VerificationType.ACCOUNT;
 import static com.adamidis.learning.warehousestockflow.Enum.VerificationType.PASSWORD;
 import static com.adamidis.learning.warehousestockflow.Query.UserQuery.*;
@@ -83,6 +82,10 @@ public class UserRepositoryImpl implements UserRepository<User>, UserDetailsServ
             // Send email to user with verification URL
             sendEmail(user.getFirstName(), user.getEmail(), verificationUrl, ACCOUNT);
 
+            /*
+             * for testing purposes
+             * no need verification!!!
+             */
             user.setEnabled(true);
             user.setNotLocked(true);
             System.out.println(verificationUrl);
