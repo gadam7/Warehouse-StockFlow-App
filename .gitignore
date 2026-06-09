@@ -1,5 +1,6 @@
 HELP.md
 target/
+draft/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -36,4 +37,4 @@ build/
 application-dev.yaml
 src/main/resources/application-dev.yaml
 
-.env
+.envdraft/
