@@ -1,6 +1,7 @@
 package com.adamidis.learning.warehousestockflow.Service.Implementation;
 
 import com.adamidis.learning.warehousestockflow.Model.Role;
+import com.adamidis.learning.warehousestockflow.Repository.RoleJpaRepository;
 import com.adamidis.learning.warehousestockflow.Repository.RoleRepository;
 import com.adamidis.learning.warehousestockflow.Service.RoleService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository<Role> roleRepository;
+    private final RoleJpaRepository roleJpaRepository;
 
     @Override
     public Role getRoleByUserId(Long id) {
@@ -20,6 +22,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Collection<Role> getRoles() {
-        return roleRepository.list();
+        return roleJpaRepository.findAll();
     }
 }
