@@ -1,13 +1,17 @@
 package com.adamidis.learning.warehousestockflow.Service.Implementation;
 
 import com.adamidis.learning.warehousestockflow.DTO.UserDTO;
+import com.adamidis.learning.warehousestockflow.Exception.ApiException;
 import com.adamidis.learning.warehousestockflow.Form.UpdateForm;
 import com.adamidis.learning.warehousestockflow.Model.Role;
 import com.adamidis.learning.warehousestockflow.Model.User;
+import com.adamidis.learning.warehousestockflow.Repository.RoleJpaRepository;
 import com.adamidis.learning.warehousestockflow.Repository.RoleRepository;
 import com.adamidis.learning.warehousestockflow.Repository.UserRepository;
+import com.adamidis.learning.warehousestockflow.Repository.UserRoleJpaRepository;
 import com.adamidis.learning.warehousestockflow.Service.RoleService;
 import com.adamidis.learning.warehousestockflow.Service.UserService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,6 +26,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository<User> userRepository;
     private final RoleRepository<Role> roleRepository;
     private final RoleService roleService;
+    private final RoleJpaRepository roleJpaRepository;
+    private final UserRoleJpaRepository userRoleJpaRepository;
 
     @Override
     public UserDTO createUser(User user) {
@@ -76,11 +82,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updatePassword(Long id, String currentPassword, String newPassword, String confirmNewPassword) {
         userRepository.updatePassword(id, currentPassword, newPassword, confirmNewPassword);
-    }
-
-    @Override
-    public void updateUserRole(Long userId, String roleName) {
-        roleRepository.updateUserRole(userId, roleName);
     }
 
     @Override

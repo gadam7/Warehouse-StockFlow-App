@@ -192,7 +192,7 @@ public class UserController {
     @PatchMapping("/update/role/{roleName}")
     public ResponseEntity<HttpResponse> updateUserRole(Authentication authentication, @PathVariable("roleName") String roleName) {
         UserDTO userDTO = getAuthenticatedUser(authentication);
-        userService.updateUserRole(userDTO.getId(), roleName);
+        roleService.updateUserRole(userDTO.getId(), roleName);
         publisher.publishEvent(new NewUserEvent(userDTO.getEmail(), ROLE_UPDATE));
         return ResponseEntity.ok().body(
                 HttpResponse.builder()
