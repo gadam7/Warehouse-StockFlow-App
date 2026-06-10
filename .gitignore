@@ -36,5 +36,6 @@ build/
 ### Spring Boot secrets / local profiles ###
 application-dev.yaml
 src/main/resources/application-dev.yaml
-
+.env
 .envdraft/
+.env
