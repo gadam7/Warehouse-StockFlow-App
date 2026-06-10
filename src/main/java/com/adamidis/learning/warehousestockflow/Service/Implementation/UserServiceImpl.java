@@ -6,18 +6,22 @@ import com.adamidis.learning.warehousestockflow.Model.Role;
 import com.adamidis.learning.warehousestockflow.Model.User;
 import com.adamidis.learning.warehousestockflow.Repository.RoleRepository;
 import com.adamidis.learning.warehousestockflow.Repository.UserRepository;
+import com.adamidis.learning.warehousestockflow.Service.RoleService;
 import com.adamidis.learning.warehousestockflow.Service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import static com.adamidis.learning.warehousestockflow.DTO.UserDTOMapper.fromUser;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository<User> userRepository;
     private final RoleRepository<Role> roleRepository;
+    private final RoleService roleService;
 
     @Override
     public UserDTO createUser(User user) {
@@ -95,6 +99,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserDTO mapToUserDTO(User user) {
+        log.info("Mapping user {} with id {}", user.getEmail(), user.getId());
         return fromUser(user, roleRepository.getRoleByUserId(user.getId()));
     }
 }

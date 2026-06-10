@@ -17,7 +17,7 @@ public class Scheduler {
     private final StockStatusService stockStatusService;
 
     @Transactional
-    @Scheduled(fixedRate = 50_000) // every 50  seconds
+    //@Scheduled(fixedRate = 50_000) // every 50  seconds
     public void processProductsStock() {
         System.out.println("Processing products stock...");
 
